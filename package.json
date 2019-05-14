@@ -1,0 +1,16 @@
+{
+  "name": "create-file",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.20.0"
+  },
+  "bin": {
+    "npmrc": "./bin/index.js"
+  }
+}
