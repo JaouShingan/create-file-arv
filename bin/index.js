@@ -7,7 +7,7 @@ const utils = require('./utils');
 program
     .version('1.0.0')
     .description('create file')
-    .option('r, react <name>', 'your file path and file name', '')
+    .option('r, react <name>', 'your file path and file name', '');
 
 program.parse(process.argv);
 const filePath = program.react;
@@ -21,7 +21,7 @@ if (filePath) {
     dirs.forEach(p => {
         dirPath += `${p}/`;
         if (!fs.existsSync(dirPath)) {
-            console.log(`创建文件夹： ${p}`);
+            // console.log(`创建文件夹： ${p}`);
             fs.mkdirSync(dirPath);
         }
     });
@@ -32,24 +32,32 @@ if (filePath) {
         .replace('{{cssClassName}}', cssClassName);
     const cssTemplate = template.react.css
         .replace('{{cssClassName}}', cssClassName);
-    fs.writeFile(
-        dirPath + 'index.js',
-        jsTemplate,
-        (err) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log('文件创建成功！')
-            }
-        });
-    fs.writeFile(
-        dirPath + 'index.css',
-        cssTemplate,
-        (err) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log('文件创建成功！')
-            }
-        });
+    if (!fs.existsSync(dirPath + 'index.js')) {
+        fs.writeFile(
+            dirPath + 'index.js',
+            jsTemplate,
+            (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log('js文件创建成功！')
+                }
+            });
+    } else {
+        console.error('js文件已存在');
+    }
+    if (!fs.existsSync(dirPath + 'index.js')) {
+        fs.writeFile(
+            dirPath + 'index.css',
+            cssTemplate,
+            (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log('css文件创建成功！')
+                }
+            });
+    } else {
+        console.error('css文件已存在');
+    }
 }

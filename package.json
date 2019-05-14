@@ -1,9 +1,10 @@
 {
   "name": "create-file-arv",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/index.js r"
   },
   "author": "",
   "license": "ISC",
@@ -11,7 +12,7 @@
     "commander": "^2.20.0"
   },
   "bin": {
-    "npmrc": "./bin/index.js"
+    "cf": "./bin/index.js"
   },
   "repository": {
     "type": "git",
