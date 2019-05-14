@@ -1,5 +1,5 @@
 {
-  "name": "create-file",
+  "name": "create-file-arv",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -12,5 +12,9 @@
   },
   "bin": {
     "npmrc": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaouShingan/create-file-arv.git"
   }
 }
