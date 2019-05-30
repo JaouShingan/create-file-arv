@@ -1,10 +1,9 @@
 {
   "name": "create-file-arv",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/index.js r"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +12,7 @@
     "execa": "^1.0.0"
   },
   "bin": {
-    "cf": "./bin/index.js",
-    "cfa": "./bin/index.js --angular",
-    "cfr": "./bin/index.js --react",
-    "cfv": "./bin/index.js --vue"
+    "cf": "./bin/index.js"
   },
   "repository": {
     "type": "git",
