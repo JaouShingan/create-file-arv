@@ -1,6 +1,6 @@
 {
   "name": "create-file-arv",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,10 @@
     "execa": "^1.0.0"
   },
   "bin": {
-    "cf": "./bin/index.js"
+    "cf": "./bin/index.js",
+    "cfa": "./bin/index.js --angular",
+    "cfr": "./bin/index.js --react",
+    "cfv": "./bin/index.js --vue"
   },
   "repository": {
     "type": "git",
