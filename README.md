@@ -25,12 +25,17 @@ csext|css|css文件默认后缀
 ``
     cf -r @c/abc/example
 ``
+
  执行命令后，将在components/abc/example文件夹下创建index.js和index.css文件
+
 ``
     cf -r @c/abc/example.js
 ``
+
  执行命令后，将在components/abc文件夹下创建example.js和example.css文件
+
 ``
     cf --set @abc=abc
 ``
+
  执行命令后，可以配置用户自己的预置路径
