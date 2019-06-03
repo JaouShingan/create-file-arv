@@ -1,3 +1,4 @@
+const fs = require('fs');
 module.exports = {
     toBigCamelCase(name) {
         const firstChar = name.charAt(0).toUpperCase();
@@ -5,5 +6,14 @@ module.exports = {
     },
     getClassName(name) {
         return name.replace(/([A-Z])/g, '-$1').toLowerCase();
+    },
+    writeFile(path, content, successMessage) {
+        fs.writeFile(path, content, (err) => {
+            if (err) {
+                program.help(() => err);
+            } else {
+                console.log(successMessage);
+            }
+        })
     }
 }

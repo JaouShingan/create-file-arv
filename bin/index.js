@@ -10,7 +10,7 @@ const userHomeDir = os.homedir();
 // 配置文件路径
 const configFilePath = `${userHomeDir}/.create-file-arv-config`;
 program
-    .version('1.0.0')
+    .version('1.0.6')
     .description('create file')
     .option('-a, --angular <name>', 'create angular file')
     .option('-r, --react <name>', 'create react file')
@@ -49,13 +49,7 @@ if (set) {
     customConfig[addItemKey] = addItemValue;
     const configStr = Object.entries(customConfig)
         .map(item => `${item[0]}=${item[1]}`).join('\n');
-    fs.writeFile(configFilePath, configStr, (err) => {
-        if (err) {
-            program.help(() => err.message);
-        } else {
-            program.help(() => 'set config success!');
-        }
-    });
+    utils.writeFile(configFilePath, configStr, 'config set success!')
     return;
 }
 if (react || vue || angular) {
@@ -80,6 +74,7 @@ if (react || vue || angular) {
     // 创建文件路径
     let dirPath = '';
     dirs.forEach(p => {
+        if (!p) return;
         dirPath += `${p}/`;
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
@@ -95,34 +90,28 @@ if (react || vue || angular) {
     const cssClassName = utils.getClassName(name);
     // 得到js文件后缀名，css文件后缀名,html文件后缀名
     const jsext = '.' + (ext || customConfig.jsext || baseConfig.jsext);
+    const cssLang = (ext || customConfig.cssext || baseConfig.cssext);
     const cssext = '.' + (customConfig.cssext || baseConfig.cssext);
     const html = '.' + (customConfig.htmlext || baseConfig.htmlext);
-    console.log('dir path: ', dirPath);
+    console.log(`dir path:  ${dirPath}`)
     if (react) {
         const jsTemplate = template.react.js
-            .replace('{{jsClassName}}', jsClassName)
-            .replace('{{cssClassName}}', cssClassName);
+            .replace(/\{\{jsClassName\}\}/g, jsClassName)
+            .replace(/\{\{fileName\}\}/g, fileName)
+            .replace(/\{\{cssClassName\}\}/g, cssClassName)
+            .replace(/\{\{cssext\}\}/g, cssext);
         const cssTemplate = template.react.css
-            .replace('{{cssClassName}}', cssClassName);
-        fs.writeFile(
-            dirPath + fileName + jsext,
-            jsTemplate,
-            (err) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log('js file created !')
-                }
-            });
-        fs.writeFile(
-            dirPath + fileName + cssext,
-            cssTemplate,
-            (err) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log('css file created !')
-                }
-            });
+            .replace('\{\{cssClassName\}\}', cssClassName);
+        utils.writeFile(dirPath + fileName + jsext,
+            jsTemplate, 'js file created !')
+        utils.writeFile(dirPath + fileName + cssext,
+            cssTemplate, 'css file created !')
+    }
+    if (vue) {
+        const vueTemplate = template.vue.js
+            .replace(/\{\{cssClassName\}\}/g, cssClassName)
+            .replace(/\{\{cssLang\}\}/g, cssLang);
+        utils.writeFile(dirPath + fileName + '.vue',
+            vueTemplate, 'vue file created !');
     }
 }
