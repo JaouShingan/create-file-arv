@@ -1,6 +1,6 @@
-# create-file / 创建文件
+# create-file-arv / 创建文件
 
-根据输入创建React的js和css文件。
+根据输入创建React/Vue文件
 
 
 ## 选项说明
@@ -8,9 +8,10 @@
 选项|参数|说明
 -|-|-
 -r,--react|[@c/path/]name[.ext]|创建一个react文档,@c为路径别名
--v,--vue|[@c/path/]name[.ext]|创建一个react文档
+-v,--vue|[@c/path/]name[.ext]|创建一个vue文档
 --set|key=value|设置用户选项
-
+-V,--version||版本信息
+-h,--help||帮助信息
 
 ## 默认设置
 配置名|默认值|说明
