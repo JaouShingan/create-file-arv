@@ -7,8 +7,8 @@
 
 选项|参数|说明
 -|-|-
--r,--react|[@c|path/]name[.ext]|创建一个react文档,@c为路径别名
--v,--vue|[@c|path/]name[.ext]|创建一个react文档
+-r,--react|[@c/path/]name[.ext]|创建一个react文档,@c为路径别名
+-v,--vue|[@c/path/]name[.ext]|创建一个react文档
 --set|key=value|设置用户选项
 
 
