@@ -28,7 +28,8 @@ const baseConfig = {
     'htmlext': 'html',
     '@c': './components',
     '@v': './views',
-    '@p': './pages'
+    '@p': './pages',
+    'cssPrefix': ''
 };
 // 用户配置
 const customConfig = {};
@@ -44,6 +45,15 @@ if (fs.existsSync(configFilePath)) {
 }
 
 if (set) {
+    if (set === 'list') {
+        const out = {
+            ...baseConfig,
+            ...customConfig
+        }
+        console.log('config list ! 配置列表！');
+        console.table(out);
+        return;
+    }
     const addItemKey = set.split('=')[0];
     const addItemValue = set.split('=')[1];
     customConfig[addItemKey] = addItemValue;
@@ -87,7 +97,7 @@ if (react || vue || angular) {
     }
     // 得到js文件类名，css文件样式名
     const jsClassName = utils.toBigCamelCase(name);
-    const cssClassName = utils.getClassName(name);
+    const cssClassName = utils.getClassName(name, customConfig.cssPrefix || baseConfig.cssPrefix);
     // 得到js文件后缀名，css文件后缀名,html文件后缀名
     const jsext = '.' + (ext || customConfig.jsext || baseConfig.jsext);
     const cssLang = (ext || customConfig.cssext || baseConfig.cssext);

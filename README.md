@@ -9,7 +9,7 @@
 -|-|-
 -r,--react|[@c/path/]name[.ext]|创建一个react文档,@c为路径别名
 -v,--vue|[@c/path/]name[.ext]|创建一个vue文档
---set|key=value|设置用户选项
+--set|key=value / list|设置用户选项 / 打印配置列表
 -V,--version||版本信息
 -h,--help||帮助信息
 
