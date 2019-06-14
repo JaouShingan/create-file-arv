@@ -1,7 +1,8 @@
 # create-file-arv / 创建文件
 
-根据输入创建React/Vue文件
+    根据输入创建React/Vue文件，当前版本1.0.8。
 
+>v1.0.8 新增模版注释，可配置文件创建人
 
 ## 选项说明
 
@@ -21,6 +22,16 @@ csext|css|css文件默认后缀
 @c|components|预置路径
 @v|views|预置路径
 @p|pages|预置路径
+
+## --set命令可以配置的选项
+
+可配置项|说明
+-|-
+jsext|js文件默认后缀
+csext|css文件默认后缀
+author|用户名，放在注释里面
+@xx|以@开头的路径
+cssPrefix|css的class名的前缀
 
 ## 使用范例
 

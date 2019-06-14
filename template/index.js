@@ -1,4 +1,6 @@
+const utils  = require('../bin/utils');
 module.exports = {
+    annotation: `/**\n * @file {{fileName}}\n * @date ${utils.getCurrentDate()}\n * @author {{author}}\n */\n`,
     react: {
         js: `import React, { Component } from 'react';
 import './{{fileName}}{{cssext}}';

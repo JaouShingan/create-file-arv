@@ -18,6 +18,14 @@ program
     .option('--set <config>', 'change default config');
 
 program.parse(process.argv);
+/**
+ * 得到注释
+ */
+const getAnnotation = (fileName, author) => {
+    const anstr = template.annotation;
+    return anstr.replace('{{fileName}}', fileName).replace('{{author}}', author);
+}
+
 const { angular, react, vue, set } = program;
 if (!angular && !react && !vue && !set) { console.error('plz use -h show options!'); return; }
 // 获取配置文件
@@ -95,6 +103,7 @@ if (react || vue || angular) {
     if (ext) {
         fileName = name;
     }
+    const annotationStr = getAnnotation(name, customConfig.author || '');
     // 得到js文件类名，css文件样式名
     const jsClassName = utils.toBigCamelCase(name);
     const cssClassName = utils.getClassName(name, customConfig.cssPrefix || baseConfig.cssPrefix);
@@ -113,15 +122,15 @@ if (react || vue || angular) {
         const cssTemplate = template.react.css
             .replace('\{\{cssClassName\}\}', cssClassName);
         utils.writeFile(dirPath + fileName + jsext,
-            jsTemplate, 'js file created !')
+            annotationStr + jsTemplate, 'js file created !')
         utils.writeFile(dirPath + fileName + cssext,
-            cssTemplate, 'css file created !')
+            annotationStr + cssTemplate, 'css file created !')
     }
     if (vue) {
         const vueTemplate = template.vue.js
             .replace(/\{\{cssClassName\}\}/g, cssClassName)
             .replace(/\{\{cssLang\}\}/g, cssLang);
         utils.writeFile(dirPath + fileName + '.vue',
-            vueTemplate, 'vue file created !');
+            annotationStr + vueTemplate, 'vue file created !');
     }
 }
