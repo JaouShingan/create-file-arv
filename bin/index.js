@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const program = require('commander');
+const package = require('../package.json');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -10,14 +11,17 @@ const userHomeDir = os.homedir();
 // 配置文件路径
 const configFilePath = `${userHomeDir}/.create-file-arv-config`;
 program
-    .version('1.0.6')
+    .version(package.version)
     .description('create file')
     .option('-a, --angular <name>', 'create angular file')
     .option('-r, --react <name>', 'create react file')
     .option('-v, --vue <name>', 'create vue file')
+    .option('n, --anName <annotation>', 'every file annotation filename')
     .option('--set <config>', 'change default config');
 
 program.parse(process.argv);
+console.log(program);
+// return;
 /**
  * 得到注释
  */
@@ -26,7 +30,7 @@ const getAnnotation = (fileName, author) => {
     return anstr.replace('{{fileName}}', fileName).replace('{{author}}', author);
 }
 
-const { angular, react, vue, set } = program;
+const { angular, react, vue, anName, set } = program;
 if (!angular && !react && !vue && !set) { console.error('plz use -h show options!'); return; }
 // 获取配置文件
 // 基础配置
@@ -103,7 +107,7 @@ if (react || vue || angular) {
     if (ext) {
         fileName = name;
     }
-    const annotationStr = getAnnotation(name, customConfig.author || '');
+    const annotationStr = getAnnotation(anName || name, customConfig.author || '');
     // 得到js文件类名，css文件样式名
     const jsClassName = utils.toBigCamelCase(name);
     const cssClassName = utils.getClassName(name, customConfig.cssPrefix || baseConfig.cssPrefix);

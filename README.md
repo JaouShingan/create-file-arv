@@ -1,6 +1,8 @@
 # create-file-arv / 创建文件
 
-    根据输入创建React/Vue文件，当前版本1.0.8。
+    根据输入创建React/Vue文件，当前版本1.0.9。
+
+>v1.0.9 新增文件名配置项，修复bug
 
 >v1.0.8 新增模版注释，可配置文件创建人
 
@@ -11,6 +13,7 @@
 -r,--react|[@c/path/]name[.ext]|创建一个react文档,@c为路径别名
 -v,--vue|[@c/path/]name[.ext]|创建一个vue文档
 --set|key=value / list|设置用户选项 / 打印配置列表
+n,--anName|string|注释里的文件名
 -V,--version||版本信息
 -h,--help||帮助信息
 

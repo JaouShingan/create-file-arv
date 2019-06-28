@@ -5,8 +5,13 @@ module.exports = {
         js: `import React, { Component } from 'react';
 import './{{fileName}}{{cssext}}';
 export default class {{jsClassName}} extends Component {
+    constructor() {
+        super();
+        this.state = {};
+    }
+    componentDidMount() {}
     render() {
-        return (<div className="{{cssClassName}}"></div>);
+        return (<div className="{{cssClassName}}">page {{jsClassName}}</div>);
     }
 }`,
         css: `.{{cssClassName}} { \n}`

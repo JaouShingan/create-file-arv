@@ -1,8 +1,13 @@
 const fs = require('fs');
 module.exports = {
     toBigCamelCase(name) {
-        const firstChar = name.charAt(0).toUpperCase();
-        return firstChar + name.substring(1);
+        // 将所有的/-[a-z]/替换成/-[A-Z]/
+        const temp = (name || '').replace(/-+/g, '-')
+            .replace(/-([a-z])/g, (char) => String(char).toLocaleUpperCase())
+            // 替换掉所有非0-9a-zA-Z_的字符
+            .replace(/[^0-9a-zA-Z_]*/g, '');
+        const firstChar = temp.charAt(0).toUpperCase();
+        return firstChar + temp.substring(1);
     },
     getClassName(name, prefix) {
         let temp = name.replace(/([A-Z])/g, '-$1').toLowerCase();
