@@ -20,8 +20,6 @@ program
     .option('--set <config>', 'change default config');
 
 program.parse(process.argv);
-console.log(program);
-// return;
 /**
  * 得到注释
  */
