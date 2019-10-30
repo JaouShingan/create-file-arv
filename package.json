@@ -1,12 +1,12 @@
 {
   "name": "create-file-arv",
   "version": "1.0.10",
-  "description": "",
+  "description": "一个开发过程中生成项目文件的工具",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
-  "author": "",
-  "license": "ISC",
+  "author": "J",
+  "license": "MIT",
   "dependencies": {
     "commander": "^2.20.0",
     "execa": "^1.0.0"
@@ -17,5 +17,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JaouShingan/create-file-arv.git"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "js",
+    "util",
+    "React",
+    "Vue",
+    "文件生成"
+  ]
 }
