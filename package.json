@@ -1,18 +1,17 @@
 {
   "name": "create-file-arv",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "一个开发过程中生成项目文件的工具",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "author": "J",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.20.0",
+    "commander": "^6.0.0",
     "execa": "^1.0.0"
   },
   "bin": {
-    "cf": "./bin/index.js"
+    "cf": "./bin/index.js",
+    "cfv": "./bin/cv.js"
   },
   "repository": {
     "type": "git",
