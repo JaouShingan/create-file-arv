@@ -7,11 +7,14 @@ const vue = `
 <script>
 ${annotation}
 export default {
-    data() { 
+    name: '{{componentName}}',
+    data () { 
         return {/* to do*/}
     },
-    methods: {},
-    computed: {}
+    props: {},
+    computed: {},
+    mounted () {},
+    methods: {}
 }
 </script>
 
