@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^6.0.0",
-    "execa": "^1.0.0"
+    "execa": "^7.1.1"
   },
   "bin": {
     "cf": "./bin/index.js",
